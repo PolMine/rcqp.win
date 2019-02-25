@@ -9,7 +9,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
 # 32bit
 
 The dll files in the inst/libs directory are copied from the rcwb project at
@@ -30,14 +29,19 @@ pcre:
 * using the file cross_compile in /Users/blaette/Lab/tmp/rcwb/Extras/Scripts/Shell
 * commented out: cross_common.inc
 * content of the file 'rcqpcrossrc':
+
+```{sh}
 RCQP_CROSS_CC=i386-mingw32-gcc
 RCQP_CROSS_HOST=i386-mingw32
 RCQP_CROSS_ARCH=i386
 RCQP_CROSS_BASEDIR=~/Lab/tmp/CrossCompilation
 RCQP_PCRE_URL=ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz
+```
 * call: ./cross_compile pcre
 
+```{sh}
 ./configure --host=i386-mingw32-gcc --prefix=/Users/blaette/Lab/tmp/CrossCompilation/Output RCQP_PLATFORM=mingw RCQP_CROSS_CC=i386-mingw32-gcc RCQP_CROSS_HOST=i386-mingw32 RCQP_CROSS_ARCH=i386
+```
 
 A helpful explanation:
 www.blogcompiler.com/2010/07/11/compile-for-windows-on-linux
@@ -53,14 +57,14 @@ cd pcre-DIR
 
 To get the installation directory for cross-compilation:
 
-```{r}
+```{sh}
 MINGW_OUTPUT_TMP=`x86_64-w64-mingw32-gcc --print-search-dirs | grep ^install`; echo ${MINGW_OUTPUT_TMP:9}
 ```
 
 
 Make pcre on Dell:
 
-```{r}
+```{sh}
 CC=x86_64-w64-mingw32-gcc CC_FOR_BUILD=gcc  ./configure             \
 --host=x86_64-w64-mingw32                                  \
 --enable-utf8 --enable-unicode-properties --enable-jit     \
@@ -74,7 +78,7 @@ CC=x86_64-w64-mingw32-gcc CC_FOR_BUILD=gcc  ./configure             \
 libiconv
 --------
 
-```{r}
+```{sh}
 wget https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.15.tar.gz
 tar xzfv libiconv-1.15.tar.gz
 CC=x86_64-w64-mingw32-gcc CC_FOR_BUILD=gcc                            \
@@ -90,7 +94,7 @@ sudo make install
 expat
 -----
 
-```{r}
+```{sh}
 wget http://downloads.sourceforge.net/expat/expat-2.1.0.tar.gz
 tar xzfv expat-2.1.0.tar.gz
 CC=x86_64-w64-mingw32-gcc CC_FOR_BUILD=gcc                            \
@@ -106,7 +110,7 @@ sudo make install
 gettext
 -------
 
-```{r}
+```{sh}
 wget http://ftp.gnu.org/pub/gnu/gettext/gettext-latest.tar.gz
 tar xzfv gettext-latest.tar.gz
 cd gettext-0.19.8.1/
@@ -127,7 +131,7 @@ This failed often - at the end, it worked. Because it depends on glib ? no idea.
 libffi
 ------
 
-```{r}
+```{sh}
 wget ftp://sourceware.org/pub/libffi/libffi-3.2.tar.gz
 tar xzfv libffi-3.2.tar.gz
 cd libffi-3.2
